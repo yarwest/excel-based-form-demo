@@ -4,10 +4,16 @@ public class FormComponent {
 
 	private String name;
 	private String type;
+	private int id;
 
-	public FormComponent(String name, String type) {
+	public FormComponent(String name, String type, int id) {
 		this.name = name;
 		this.type = type;
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public void setName(String name) {
