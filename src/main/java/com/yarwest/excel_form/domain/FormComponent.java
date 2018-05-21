@@ -3,10 +3,10 @@ package com.yarwest.excel_form.domain;
 public class FormComponent {
 
 	private String name;
-	private String type;
+	private FormComponentTypeEnum type;
 	private int id;
 
-	public FormComponent(String name, String type, int id) {
+	public FormComponent(String name, FormComponentTypeEnum type, int id) {
 		this.name = name;
 		this.type = type;
 		this.id = id;
@@ -24,11 +24,11 @@ public class FormComponent {
 		return name;
 	}
 
-	public void setType(String type) {
+	public void setType(FormComponentTypeEnum type) {
 		this.type = type;
 	}
 
-	public String getType() {
+	public FormComponentTypeEnum getType() {
 		return type;
 	}
 }
