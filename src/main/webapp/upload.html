@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Excel Based Form Demo - Upload</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="css/upload.css" />
+	</head>
+	<body>
+		<h1>Upload Form Model</h1>
+
+		<form action="/form/upload" enctype="multipart/form-data" method="post">
+			<input type="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+			<input type="submit" value="Submit">
+		</form>
+		<script src="lib/jquery.min.js"></script>
+		<script src="js/upload.js"></script>
+	</body>
+</html>

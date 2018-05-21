@@ -16,8 +16,12 @@ public class FormModel {
 		this.components.addAll(Arrays.asList(components));
 	}
 
-	public void addComponents (FormComponent[] components) {
+	public void addComponents(FormComponent[] components) {
 		this.components.addAll(Arrays.asList(components));
+	}
+
+	public void addComponent(FormComponent component) {
+		this.components.add(component);
 	}
 
 	public FormComponent[] getComponents() {
