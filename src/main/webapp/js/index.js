@@ -9,6 +9,11 @@ $(document).ready(
 							$("#formBody").append($(this).html());
 						});
 						break;
+					case "EMAIL":
+						$("<div>").load("/components/emailFormField.html", function() {
+							$("#formBody").append($(this).html());
+						});
+						break;
 					case "TEXT":
 					default:
 						$("<div>").load("/components/textFormField.html", function() {
