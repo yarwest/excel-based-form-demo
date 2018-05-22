@@ -3,18 +3,16 @@ package com.yarwest.excel_form.controllers;
 import com.yarwest.excel_form.domain.FormComponent;
 import com.yarwest.excel_form.domain.FormComponentTypeEnum;
 import com.yarwest.excel_form.domain.FormModel;
+import com.yarwest.excel_form.domain.Validation;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,7 +70,12 @@ public class FormController {
 				cell = cellIterator.next();
 				int id = (int)cell.getNumericCellValue();
 
-				formModel.addComponent(new FormComponent(name, type, id));
+				if(cellIterator.hasNext()) {
+					cell = cellIterator.next();
+					formModel.addComponent(new FormComponent(name, type, id, new Validation(cell.getStringCellValue())));
+				} else {
+					formModel.addComponent(new FormComponent(name, type, id));
+				}
 			}
 
 		} catch (IOException e) {

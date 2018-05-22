@@ -1,3 +1,5 @@
+var timer = null;
+
 $(document).ready(
 	$.get({
 		url: "/form/",
@@ -21,6 +23,12 @@ $(document).ready(
 						});
 						break;
 				}
+				$("#formBody").on("keyup", "*", function() {
+					clearTimeout(timer);
+					timer = setTimeout(function() {
+						validate(component)
+					}, 500);
+				});
 			});
 		}}
 	)

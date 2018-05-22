@@ -5,6 +5,7 @@ public class FormComponent {
 	private String name;
 	private FormComponentTypeEnum type;
 	private int id;
+	private Validation validation;
 
 	public FormComponent(String name, FormComponentTypeEnum type, int id) {
 		this.name = name;
@@ -12,20 +13,21 @@ public class FormComponent {
 		this.id = id;
 	}
 
-	public int getId() {
-		return id;
+	public FormComponent(String name, FormComponentTypeEnum type, int id, Validation validation) {
+		this(name, type, id);
+		this.validation = validation;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public int getId() {
+		return id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setType(FormComponentTypeEnum type) {
-		this.type = type;
+	public Validation getValidation() {
+		return validation;
 	}
 
 	public FormComponentTypeEnum getType() {
