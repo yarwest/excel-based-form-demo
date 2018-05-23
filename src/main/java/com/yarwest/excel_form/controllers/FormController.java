@@ -28,6 +28,7 @@ public class FormController {
 	public FormController() {
 		FormComponent[] components = new FormComponent[2];
 		components[0] = new FormComponent("Username", FormComponentTypeEnum.TEXT, 1);
+		components[0].setValue("Yarno");
 		components[1] = new FormComponent("Password", FormComponentTypeEnum.PASSWORD, 2);
 		formModel = new FormModel();
 		formModel.addComponents(components);
