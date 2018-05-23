@@ -1,11 +1,11 @@
 <script name="textFormField" type="text/x-handlebars-template">
-	<input type="text" id="{{id}}">
+	<input type="text" id="{{id}}" onkeyup="validate(this);" placeholder="{{name}}" value="{{value}}">
 </script>
 
 <script name="passwordFormField" type="text/x-handlebars-template">
-	<input type="password" id="{{id}}">
+	<input type="password" id="{{id}}" onkeyup="validate(this);" placeholder="{{name}}" value="{{value}}">
 </script>
 
 <script name="emailFormField" type="text/x-handlebars-template">
-	<input type="email" id="{{id}}">
+	<input type="email" id="{{id}}" onkeyup="validate(this);" placeholder="{{name}}" value="{{value}}">
 </script>
