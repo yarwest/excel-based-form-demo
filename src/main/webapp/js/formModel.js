@@ -13,6 +13,7 @@ $(document).ready(function () {
 		$.get({
 			url: "/form/",
 			success: function(data) {
+				$formBody.empty();
 				formModel = data.components;
 				var componentName;
 				data.components.forEach(function (component) {

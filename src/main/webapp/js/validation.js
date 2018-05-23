@@ -9,14 +9,14 @@ function validate(eventTarget) {
 				break;
 		}
 	}
-	// if there are errors, display the error popup
-	if(component.errors.length > 0) {
-		// but first remove the old popup inside the same input container
-		Array.from(document.getElementsByClassName("errorContainer")).forEach(function (container) {
-			eventTarget.parentNode.removeChild(container);
-		});
 
-		// and then create a new one with a list of the error messages
+	// remove the old popup inside the same input container
+	Array.from(document.getElementsByClassName("errorContainer")).forEach(function (container) {
+		eventTarget.parentNode.removeChild(container);
+	});
+
+	// if there are errors, create a new error popup with a list of the error messages
+	if(component.errors.length > 0) {
 		var errorContainer = document.createElement("div");
 		errorContainer.classList.add("errorContainer");
 		var errorList = document.createElement("ul");
@@ -28,6 +28,12 @@ function validate(eventTarget) {
 		errorContainer.append(errorList);
 		eventTarget.after(errorContainer);
 	}
+
+	// also revalidate any components that look at this component
+	formModel.filter(function(item){ console.log(item); console.log(component); return (item.validation?item.validation.ids.includes(component.id):false); }).forEach(function (item) {
+		console.log(item);
+		validate(document.getElementById(item));
+	});
 
 }
 
