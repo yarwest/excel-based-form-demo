@@ -28,9 +28,11 @@ $(document).ready(function () {
 							componentName = "textFormField";
 							break;
 					}
-					$formBody.append(
-						Templates[componentName](component)
-					);
+
+					// create input container, add the input template, and add the entire thing to the form
+					var inputDiv = document.createElement("div");
+					inputDiv.innerHTML = Templates[componentName](component);
+					$formBody.append(inputDiv);
 				});
 			}
 		})
