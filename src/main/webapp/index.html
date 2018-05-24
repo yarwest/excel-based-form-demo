@@ -3,20 +3,24 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Excel Based Form Demo - Form</title>
-		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" type="text/css" href="lib/mini.min.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
 	</head>
 	<body>
+		<div id="navigation"></div>
 		<h1>Excel Based Form Demo</h1>
 
 		<form action="/form/submit" method="post">
 			<div id="formBody">
 
 			</div>
-			<input type="submit" value="Submit">
+			<input type="submit" class="primary" value="Submit">
 		</form>
 		<script src="lib/jquery.min.js"></script>
 		<script src="lib/handlebars-v4.0.11.js"></script>
+
 		<script src="js/templates.js"></script>
+		<script src="js/form_templates.js"></script>
 		<script src="js/validation.js"></script>
 		<script src="js/formModel.js"></script>
 	</body>

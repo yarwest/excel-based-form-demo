@@ -1,28 +1,19 @@
-Templates = {};
+function loadTemplates(location, callback) {
+	$.ajax({
+		url: "../components/" + location,
+		dataType: "html",
+		cache: true,
+		success: callback
+	});
+}
 
-$.ajax({
-	url: "../components/templates.html",
-	dataType: "html",
-	cache: true,
-	success: function (data) {
-		source = data;
-		$('body').append(data);
-		templatesLoaded();
-	}
+loadTemplates("generic_elements.html", function (data) {
+	$('body').append(data);
+	genericElementsLoaded();
 });
 
-Templates.onLoaded = function () {};
-Templates.loaded = false;
-
-function templatesLoaded() {
-	$('script[type="text/x-handlebars-template"]').each(function () {
-		var name = $(this).attr("name"),
-			src = $(this).html(),
-			partialName = $(this).attr("partial-name");
-		if(partialName)
-			Handlebars.registerPartial(partialName, src);
-		Templates[name] = Handlebars.compile(src);
-	});
-	Templates.loaded = true;
-	Templates.onLoaded();
+function genericElementsLoaded() {
+	var navigationTemplate = Handlebars.compile($('script[name="navigation"]').html());
+	$('script[name="navigation"]').remove();
+	$('#navigation').append(navigationTemplate());
 }

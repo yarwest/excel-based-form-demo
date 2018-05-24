@@ -19,6 +19,8 @@ function validate(eventTarget) {
 	if(component.errors.length > 0) {
 		var errorContainer = document.createElement("div");
 		errorContainer.classList.add("errorContainer");
+		errorContainer.classList.add("error");
+		errorContainer.classList.add("card");
 		var errorList = document.createElement("ul");
 		component.errors.forEach(function (errorMessage) {
 			var errorItem = document.createElement("li");

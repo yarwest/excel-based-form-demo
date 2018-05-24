@@ -3,17 +3,26 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Excel Based Form Demo - Upload</title>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="css/upload.css" />
+		<link rel="stylesheet" type="text/css" href="lib/mini.min.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css" />
 	</head>
 	<body>
+		<div id="navigation"></div>
 		<h1>Upload Form Model</h1>
 
 		<form action="/form/upload" enctype="multipart/form-data" method="post">
-			<input type="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
-			<input type="submit" value="Submit">
+			<div>
+				<input id="file-input" type="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+				<label for="file-input" class="button">Upload file</label>
+				<span id="file-name"></span>
+			</div>
+			<div>
+				<input type="submit" class="primary" value="Submit">
+			</div>
 		</form>
 		<script src="lib/jquery.min.js"></script>
+		<script src="lib/handlebars-v4.0.11.js"></script>
+		<script src="js/templates.js"></script>
 		<script src="js/upload.js"></script>
 	</body>
 </html>
