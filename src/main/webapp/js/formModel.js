@@ -21,6 +21,9 @@ $(document).ready(function () {
 						case "PASSWORD":
 							componentName = "passwordFormField";
 							break;
+						case "LABEL":
+							componentName = "formLabel";
+							break;
 						case "EMAIL":
 							componentName = "emailFormField";
 							break;
