@@ -11,8 +11,12 @@ function validate(eventTarget) {
 	}
 
 	// remove the old popup inside the same input container
-	Array.from(document.getElementsByClassName("errorContainer")).forEach(function (container) {
-		eventTarget.parentNode.removeChild(container);
+	Array.from(eventTarget.parentNode.childNodes).forEach(function (element) {
+		if (element.classList) {
+			if (element.classList.contains("errorContainer")) {
+				eventTarget.parentNode.removeChild(element);
+			}
+		}
 	});
 
 	// if there are errors, create a new error popup with a list of the error messages
@@ -32,9 +36,8 @@ function validate(eventTarget) {
 	}
 
 	// also revalidate any components that look at this component
-	formModel.filter(function(item){ console.log(item); console.log(component); return (item.validation?item.validation.ids.includes(component.id):false); }).forEach(function (item) {
-		console.log(item);
-		validate(document.getElementById(item));
+	formModel.filter(function(item){ return (item.validation?item.validation.ids.includes(component.id):false); }).forEach(function (item) {
+		validate(document.getElementById(item.id));
 	});
 
 }
