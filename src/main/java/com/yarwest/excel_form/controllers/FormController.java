@@ -27,9 +27,9 @@ public class FormController {
 
 	public FormController() {
 		FormComponent[] components = new FormComponent[2];
-		components[0] = new FormComponent("Username", FormComponentTypeEnum.TEXT, 1);
+		components[0] = new FormComponent("Username", FormComponentTypeEnum.TEXT, 1, "");
 		components[0].setValue("Yarno");
-		components[1] = new FormComponent("Password", FormComponentTypeEnum.PASSWORD, 2);
+		components[1] = new FormComponent("Password", FormComponentTypeEnum.PASSWORD, 2, "");
 		formModel = new FormModel();
 		formModel.addComponents(components);
 	}
@@ -71,11 +71,15 @@ public class FormController {
 				cell = cellIterator.next();
 				int id = (int)cell.getNumericCellValue();
 
+				// Pattern
+				cell = cellIterator.next();
+				String pattern = cell.getStringCellValue();
+
 				if(cellIterator.hasNext()) {
 					cell = cellIterator.next();
-					formModel.addComponent(new FormComponent(name, type, id, new Validation(cell.getStringCellValue())));
+					formModel.addComponent(new FormComponent(name, type, id, pattern, new Validation(cell.getStringCellValue())));
 				} else {
-					formModel.addComponent(new FormComponent(name, type, id));
+					formModel.addComponent(new FormComponent(name, type, id, pattern));
 				}
 			}
 

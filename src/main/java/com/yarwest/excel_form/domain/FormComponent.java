@@ -6,19 +6,21 @@ public class FormComponent {
 	private FormComponentTypeEnum type;
 	private String[] errors;
 	private String value;
+	private String pattern;
 	private int id;
 	private Validation validation;
 
-	public FormComponent(String name, FormComponentTypeEnum type, int id) {
+	public FormComponent(String name, FormComponentTypeEnum type, int id, String pattern) {
 		this.name = name;
 		this.type = type;
 		this.id = id;
+		this.pattern = pattern;
 		this.value = null;
 		this.errors = null;
 	}
 
-	public FormComponent(String name, FormComponentTypeEnum type, int id, Validation validation) {
-		this(name, type, id);
+	public FormComponent(String name, FormComponentTypeEnum type, int id, String pattern, Validation validation) {
+		this(name, type, id, pattern);
 		this.validation = validation;
 	}
 
