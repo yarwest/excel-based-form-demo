@@ -21,6 +21,7 @@ function validate(eventTarget) {
 
 	// if there are errors, create a new error popup with a list of the error messages
 	if(component.errors.length > 0) {
+		eventTarget.setCustomValidity("Invalid field.");
 		var errorContainer = document.createElement("div");
 		errorContainer.classList.add("errorContainer");
 		errorContainer.classList.add("error");
@@ -33,6 +34,8 @@ function validate(eventTarget) {
 		});
 		errorContainer.append(errorList);
 		eventTarget.after(errorContainer);
+	} else {
+		eventTarget.setCustomValidity("");
 	}
 
 	// also revalidate any components that look at this component
