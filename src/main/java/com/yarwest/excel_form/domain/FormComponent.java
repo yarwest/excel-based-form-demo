@@ -1,10 +1,13 @@
 package com.yarwest.excel_form.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class FormComponent {
 
 	private String name;
 	private FormComponentTypeEnum type;
-	private String[] errors;
+	private List<String> errors;
 	private String value;
 	private String pattern;
 	private int id;
@@ -16,7 +19,7 @@ public class FormComponent {
 		this.id = id;
 		this.pattern = pattern;
 		this.value = null;
-		this.errors = null;
+		this.errors = new ArrayList<>();
 	}
 
 	public FormComponent(String name, FormComponentTypeEnum type, int id, String pattern, Validation validation) {
@@ -42,6 +45,14 @@ public class FormComponent {
 
 	public Validation getValidation() {
 		return validation;
+	}
+
+	public String getPattern() {
+		return pattern;
+	}
+
+	public String[] getErrors() {
+		return errors.toArray(new String[errors.size()]);
 	}
 
 	public FormComponentTypeEnum getType() {

@@ -10,6 +10,8 @@ function validate(eventTarget) {
 		}
 	}
 
+	validatePattern(component);
+
 	// remove the old popup inside the same input container
 	Array.from(eventTarget.parentNode.childNodes).forEach(function (element) {
 		if (element.classList) {
@@ -22,18 +24,7 @@ function validate(eventTarget) {
 	// if there are errors, create a new error popup with a list of the error messages
 	if(component.errors.length > 0) {
 		eventTarget.setCustomValidity("Invalid field.");
-		var errorContainer = document.createElement("div");
-		errorContainer.classList.add("errorContainer");
-		errorContainer.classList.add("error");
-		errorContainer.classList.add("card");
-		var errorList = document.createElement("ul");
-		component.errors.forEach(function (errorMessage) {
-			var errorItem = document.createElement("li");
-			errorItem.append(document.createTextNode(errorMessage));
-			errorList.append(errorItem);
-		});
-		errorContainer.append(errorList);
-		eventTarget.after(errorContainer);
+		eventTarget.after(errorContainer(component.errors));
 	} else {
 		eventTarget.setCustomValidity("");
 	}
@@ -45,6 +36,31 @@ function validate(eventTarget) {
 
 }
 
+// Create error container
+function errorContainer(errors) {
+	var errorContainer = document.createElement("div");
+	errorContainer.classList.add("errorContainer");
+	errorContainer.classList.add("error");
+	errorContainer.classList.add("card");
+	var errorList = document.createElement("ul");
+	errors.forEach(function (errorMessage) {
+		var errorItem = document.createElement("li");
+		errorItem.append(document.createTextNode(errorMessage));
+		errorList.append(errorItem);
+	});
+	errorContainer.append(errorList);
+	return errorContainer;
+}
+
+// Validate if the value matches the given pattern.
+function validatePattern(component) {
+	var regex = new RegExp("^(" + component.pattern + ")$");
+	if(!regex.test(component.value)) {
+		component.errors.push("Value does not match expected formatting");
+	}
+}
+
+// Validate equals rule on component and related components
 function equals(component) {
 	formModel.filter(function(item){ return component.validation.ids.includes(item.id); }).forEach(function (item) {
 		if(component.value !== item.value) {
