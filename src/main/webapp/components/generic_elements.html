@@ -4,3 +4,24 @@
 		<a href="/upload.html" class="button">Upload</a>
 	</header>
 </script>
+
+<script name="notifications" type="text/x-handlebars-template">
+	{{#if successMessage}}
+	<p class="success notification">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{successMessage}}
+	</p>
+	{{/if}}
+	{{#if errorMessage}}
+	<p class="alert notification">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{errorMessage}}
+	</p>
+	{{/if}}
+	{{#if noticeMessage}}
+	<p class="notice notification">
+		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		{{noticeMessage}}
+	</p>
+	{{/if}}
+</script>

@@ -10,6 +10,8 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -45,7 +47,7 @@ public class FormController {
 	}
 
 	@PostMapping("/upload")
-	public void uploadFormModel(@RequestParam("file") MultipartFile file) {
+	public RedirectView uploadFormModel(@RequestParam("file") MultipartFile file, final RedirectAttributes attributes) {
 		formModel = new FormModel();
 
 		try {
@@ -83,8 +85,13 @@ public class FormController {
 				}
 			}
 
+			attributes.addAttribute("successMessage", "Successfully uploaded form model");
+
 		} catch (IOException e) {
 			LOGGER.log(Level.SEVERE, e.getMessage(), e);
+			attributes.addAttribute("errorMessage", "Something went wrong while processing the form model");
 		}
+
+		return new RedirectView("/upload.html");
 	}
 }

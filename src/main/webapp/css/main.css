@@ -3,7 +3,49 @@ form, .errorContainer {
 	text-align: center;
 }
 
+/* Error container */
+
 .errorContainer {
 	max-width: 400px !important;
 	margin: 5px auto 15px auto;
+}
+
+/* General notifications */
+.notification {
+	width: 90%;
+	height: 50px;
+	line-height: 50px;
+	padding-left: 20px;
+	margin-bottom: 15px;
+	margin-left: auto;
+	margin-right: auto;
+	color: white;
+	opacity: 1;
+	transition: opacity 0.6s;
+}
+
+.notification.alert {
+	background-color: #f44336; /* Red */
+}
+
+.notification.notice {
+	background-color: #2196F3; /* Blue */
+}
+
+.notification.success {
+	background-color: #4CAF50; /* Green */
+}
+
+.notification .closebtn {
+	font-weight: bold;
+	float: right;
+	font-size: 22px;
+	line-height: 45px;
+	cursor: pointer;
+	transition: 0.3s;
+	margin-right: 20px;
+}
+
+.notification .closebtn:hover {
+	color: black;
 }
