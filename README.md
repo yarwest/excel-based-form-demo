@@ -13,7 +13,7 @@ The Excel sheets are currently formatted as following:
 
 The name is the label that will be displayed along with the form element.
 
-The type is the kind of input. The current supported types are: Text, Email, Password, and Lable.
+The type is the kind of input. The current supported types are: Text, Email, Password, and Label.
 
 The id is the unique identifier of the field, this is used for referencing fields in validation rules.
 
